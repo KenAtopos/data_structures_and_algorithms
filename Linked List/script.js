@@ -167,7 +167,7 @@ class LinkedList {
       value: value,
       next: null,
     };
-    console.log(newNode);
+
     this.tail.next = newNode;
     this.tail = newNode;
     this.length++;
@@ -190,6 +190,7 @@ class LinkedList {
       array.push(currentNode.value);
       currentNode = currentNode.next;
     }
+    console.log(array);
     return array;
   }
   insert(index, value) {
@@ -227,36 +228,65 @@ class LinkedList {
     this.length--;
     return this.printList();
   }
+
+  // reverse() {
+  //   if (!this.head.next) {
+  //     return this.head;
+  //   }
+
+  //   let first = this.head; // in the end first will become a linked list start with 6...
+  //   this.tail = this.head; // make the tail equal to the head temporary, change the next (reference) to null later
+  //   let second = first.next; // get the current one
+
+  //   while (second) {
+  //     const temp = second.next; // get next one
+  //     second.next = first; // change the link to previous one
+  //     first = second;
+  //     second = temp;
+  //   } // here is make the current one link to the previous one, and swap the current one to the previous one, and next one to the current one
+
+  //   this.head.next = null; // this head did not change until now, simply change the value to null
+  //   this.head = first; // resign the first which start with 6 as the new head
+
+  //   return this.printList();
+  // }
+
   reverse() {
-    if (!this.head.next) {
-      return this.head;
-    }
+    // check...
 
-    let first = this.head;
+    let previous = null;
+    let current = this.head;
     this.tail = this.head;
-    let second = first.next;
 
-    while (second) {
-      const temp = second.next;
-      second.next = first;
-      first = second;
-      second = temp;
+    while (current) {
+      let next = current.next;
+
+      current.next = previous;
+      previous = current;
+      current = next;
     }
 
-    this.head.next = null;
-    this.head = first;
+    this.head = previous;
 
     return this.printList();
   }
 }
 
-let myLinkedList = new LinkedList(10);
+let myLinkedList = new LinkedList(0);
+
+myLinkedList.append(1);
+myLinkedList.append(2);
+myLinkedList.append(3);
+myLinkedList.append(4);
 myLinkedList.append(5);
-myLinkedList.append(16);
-myLinkedList.prepend(1);
+myLinkedList.append(6);
 myLinkedList.printList();
-myLinkedList.insert(2, 99);
-myLinkedList.insert(20, 88);
-myLinkedList.printList();
-myLinkedList.remove(2);
+// myLinkedList.append(5);
+// myLinkedList.append(16);
+// myLinkedList.prepend(1);
+// myLinkedList.printList();
+// myLinkedList.insert(2, 99);
+// myLinkedList.insert(20, 88);
+// myLinkedList.printList();
+// myLinkedList.remove(2);
 myLinkedList.reverse();
