@@ -149,32 +149,32 @@
 
 class CrazyQueue {
   constructor() {
-    this.first = [];
-    this.last = [];
+    this.popStack = [];
+    this.pushStack = [];
   }
 
   enqueue(value) {
-    const length = this.first.length;
+    const length = this.popStack.length;
     for (let i = 0; i < length; i++) {
-      this.last.push(this.first.pop());
+      this.pushStack.push(this.popStack.pop());
     }
-    this.last.push(value);
+    this.pushStack.push(value);
     return this;
   }
 
   dequeue() {
-    const length = this.last.length;
+    const length = this.pushStack.length;
     for (let i = 0; i < length; i++) {
-      this.first.push(this.last.pop());
+      this.popStack.push(this.pushStack.pop());
     }
-    this.first.pop();
+    this.popStack.pop();
     return this;
   }
   peek() {
-    if (this.last.length > 0) {
-      return this.last[0];
+    if (this.pushStack.length > 0) {
+      return this.pushStack[0];
     }
-    return this.first[this.first.length - 1];
+    return this.popStack[this.popStack.length - 1];
   }
 }
 
