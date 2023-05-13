@@ -83,12 +83,14 @@
 // fibonacciRecursive(3);
 
 //Implement a function that reverses a string using iteration...and then recursion!
-function reverseString(str) {
-  // base case
+// function reverseString(str) {
+//   // base case
+//   if (str.length === 1) return str;
 
-  // recursion
-  return str.unshift(str.pop());
-}
+//   // recursion
+//   // debugger;
+//   return str.slice(-1) + reverseString(str.slice(0, -1));
+// }
 
-reverseString("yoyo mastery");
+// reverseString("yoyo mastery");
 //should return: 'yretsam oyoy'
