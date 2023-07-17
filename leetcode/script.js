@@ -1,19 +1,24 @@
-// const smallestNumber = function (pattern) {
-//   let op = "",
-//     stack = [];
+// const findTheWinner = function (n, k) {
+//   let queue = [];
 
-//   debugger;
-//   for (let i = 0; i <= pattern.length; i++) {
-//     stack.push(i + 1);
-
-//     if (i === pattern.length || pattern[i] === "I") {
-//       while (stack.length > 0) {
-//         op += stack.pop();
-//       }
-//     }
+//   for (let i = 1; i <= n; i++) {
+//     queue.push(i);
 //   }
 
-//   return op;
+//   debugger;
+//   while (queue.length !== 1) {
+//     if (k <= queue.length) {
+//       queue.push(...queue.splice(0, k - 1));
+//       queue.shift();
+//     } else {
+//       queue.push(...queue.splice(0, k - queue.length - 1));
+//       queue.shift();
+//     }
+
+//     console.log(queue);
+//   }
+
+//   return queue[0];
 // };
 
-// smallestNumber("IIIDIDDD");
+// findTheWinner(7, 6);
