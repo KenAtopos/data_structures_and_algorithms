@@ -1,24 +1,43 @@
-// const findTheWinner = function (n, k) {
-//   let queue = [];
+// const allPossibleFBT = function (n) {
+//   let cache = {};
+//   return helper(n);
 
-//   for (let i = 1; i <= n; i++) {
-//     queue.push(i);
-//   }
-
-//   debugger;
-//   while (queue.length !== 1) {
-//     if (k <= queue.length) {
-//       queue.push(...queue.splice(0, k - 1));
-//       queue.shift();
-//     } else {
-//       queue.push(...queue.splice(0, k - queue.length - 1));
-//       queue.shift();
+//   function helper(n) {
+//     if (n === 1) {
+//       return [new TreeNode(0)];
 //     }
 
-//     console.log(queue);
-//   }
+//     if (cache[n]) {
+//       return cache[n];
+//     }
 
-//   return queue[0];
+//     let result = [];
+
+//     debugger;
+//     for (let i = 1; i <= n - 2; i += 2) {
+//       let left = helper(i);
+//       let right = helper(n - 1 - i);
+
+//       for (let lNode of left) {
+//         for (let rNode of right) {
+//           let root = new TreeNode(0);
+//           root.left = lNode;
+//           root.right = rNode;
+//           result.push(root);
+//         }
+//       }
+//     }
+
+//     cache[n] = result;
+
+//     return result;
+//   }
 // };
 
-// findTheWinner(7, 6);
+// function TreeNode(val, left, right) {
+//   this.val = val === undefined ? 0 : val;
+//   this.left = left === undefined ? null : left;
+//   this.right = right === undefined ? null : right;
+// }
+
+allPossibleFBT(7);
