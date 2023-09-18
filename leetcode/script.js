@@ -1,43 +1,60 @@
-// const allPossibleFBT = function (n) {
-//   let cache = {};
-//   return helper(n);
+// const points = [
+//   [0, 0],
+//   [2, 2],
+//   [3, 10],
+//   [5, 2],
+//   [7, 0],
+// ];
 
-//   function helper(n) {
-//     if (n === 1) {
-//       return [new TreeNode(0)];
-//     }
+// const minCostConnectPoints = function (points) {
+//   let len = points.length;
+//   let visited = new Set();
+//   let result = 0;
+//   let list = new Array(len).fill(Infinity);
 
-//     if (cache[n]) {
-//       return cache[n];
-//     }
+//   list[0] = 0;
 
-//     let result = [];
+//   debugger;
+//   for (let i = 0; i < len; i++) {
+//     let cur = 0;
+//     let min = Infinity;
 
-//     debugger;
-//     for (let i = 1; i <= n - 2; i += 2) {
-//       let left = helper(i);
-//       let right = helper(n - 1 - i);
+//     for (let j = 0; j < len; j++) {
+//       let dis = list[j];
 
-//       for (let lNode of left) {
-//         for (let rNode of right) {
-//           let root = new TreeNode(0);
-//           root.left = lNode;
-//           root.right = rNode;
-//           result.push(root);
-//         }
+//       if (visited.has(j)) {
+//         continue;
+//       }
+
+//       if (dis < min) {
+//         min = dis;
+//         cur = j;
 //       }
 //     }
 
-//     cache[n] = result;
+//     result += min;
+//     visited.add(cur);
 
-//     return result;
+//     for (let another = 0; another < len; another++) {
+//       if (visited.has(another)) {
+//         continue;
+//       }
+
+//       let md = manhattan_distance(points[cur], points[another]);
+
+//       if (md > list[another]) {
+//         continue;
+//       }
+
+//       list[another] = md;
+//     }
 //   }
+
+//   return result;
 // };
 
-// function TreeNode(val, left, right) {
-//   this.val = val === undefined ? 0 : val;
-//   this.left = left === undefined ? null : left;
-//   this.right = right === undefined ? null : right;
+// function manhattan_distance(a, b) {
+//   return Math.abs(a[0] - b[0]) + Math.abs(a[1] - b[1]);
 // }
 
-allPossibleFBT(7);
+// minCostConnectPoints(points);
